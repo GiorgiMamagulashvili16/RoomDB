@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_graph"
+    app:startDestination="@id/projectsFragment">
+    <fragment
+        android:id="@+id/projectsFragment"
+        android:name="com.example.roomdatabaselecture.ui.projects_screen.ProjectsFragment"
+        android:label="project_fragment"
+        tools:layout="@layout/project_fragment" >
+        <action
+            android:id="@+id/action_projectsFragment_to_addProjectFragment"
+            app:destination="@id/addProjectFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addProjectFragment"
+        android:name="com.example.roomdatabaselecture.ui.add_project_screen.AddProjectFragment"
+        android:label="add_project_fragment"
+        tools:layout="@layout/add_project_fragment" >
+        <action
+            android:id="@+id/action_addProjectFragment_to_projectsFragment"
+            app:destination="@id/projectsFragment"
+            app:popUpTo="@id/addProjectFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+</navigation>

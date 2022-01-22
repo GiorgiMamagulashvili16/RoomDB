@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">RoomDatabaseLecture</string>
+    <string name="username">Username</string>
+    <string name="log_in">Log In</string>
+    <string name="description">Description</string>
+    <string name="title">title</string>
+    <string name="add_project">add project</string>
+</resources>
