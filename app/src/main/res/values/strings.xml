@@ -5,4 +5,9 @@
     <string name="description">Description</string>
     <string name="title">title</string>
     <string name="add_project">add project</string>
+    <string name="add_new_project">add new Project</string>
+    <string name="add_new_task">Add New Task</string>
+    <string name="add_task">add task</string>
+    <string name="task">Task</string>
+    <string name="my_project">My Project</string>
 </resources>

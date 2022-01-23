@@ -4,20 +4,30 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.setFragmentResult
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.roomdatabaselecture.R
+import com.example.roomdatabaselecture.data.model.Project
+import com.example.roomdatabaselecture.data.utils.Constants.PROJECT_BUNDLE_KEY
+import com.example.roomdatabaselecture.data.utils.Constants.PROJECT_REQUEST_KEY
 import com.example.roomdatabaselecture.databinding.ProjectFragmentBinding
+import com.example.roomdatabaselecture.ui.projects_screen.adapter.OnProjectItemClick
+import com.example.roomdatabaselecture.ui.projects_screen.adapter.ProjectAdapter
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
-class ProjectsFragment : Fragment() {
+class ProjectsFragment : Fragment(), OnProjectItemClick {
 
     private var _binding: ProjectFragmentBinding? = null
     private val binding get() = _binding!!
 
     private val projectViewModel: ProjectsViewModel by viewModels()
-    private val projectAdapter by lazy { ProjectAdapter() }
+    private val projectAdapter by lazy { ProjectAdapter(this) }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -31,6 +41,7 @@ class ProjectsFragment : Fragment() {
         projectViewModel.setAllProject()
         observeAllProjects()
         setListeners()
+        initRecyclerView()
     }
 
     private fun setListeners() {
@@ -41,7 +52,6 @@ class ProjectsFragment : Fragment() {
 
     private fun observeAllProjects() {
         projectViewModel.allProjectData.observe(viewLifecycleOwner, {
-            initRecyclerView()
             projectAdapter.submitList(it)
         })
     }
@@ -58,4 +68,9 @@ class ProjectsFragment : Fragment() {
         _binding = null
     }
 
+    override fun onProjectClick(projectId: Int) {
+       ProjectsFragmentDirections.actionProjectsFragmentToProjectDetailFragment(projectId).also {
+           findNavController().navigate(it)
+       }
+    }
 }

@@ -12,6 +12,9 @@
         <action
             android:id="@+id/action_projectsFragment_to_addProjectFragment"
             app:destination="@id/addProjectFragment" />
+        <action
+            android:id="@+id/action_projectsFragment_to_projectDetailFragment"
+            app:destination="@id/projectDetailFragment" />
     </fragment>
     <fragment
         android:id="@+id/addProjectFragment"
@@ -23,5 +26,34 @@
             app:destination="@id/projectsFragment"
             app:popUpTo="@id/addProjectFragment"
             app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/projectDetailFragment"
+        android:name="com.example.roomdatabaselecture.ui.project_detail_screen.ProjectDetailFragment"
+        android:label="project_detail_fragment"
+        tools:layout="@layout/project_detail_fragment" >
+        <action
+            android:id="@+id/action_projectDetailFragment_to_projectsFragment"
+            app:destination="@id/projectsFragment"
+            app:popUpTo="@id/projectDetailFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_projectDetailFragment_to_addTaskFragment"
+            app:destination="@id/addTaskFragment" />
+        <argument
+            android:name="projectid"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/addTaskFragment"
+        android:name="com.example.roomdatabaselecture.ui.add_task_screen.AddTaskFragment"
+        android:label="add_task_fragment"
+        tools:layout="@layout/add_task_fragment" >
+        <action
+            android:id="@+id/action_addTaskFragment_to_projectDetailFragment"
+            app:destination="@id/projectDetailFragment" />
+        <argument
+            android:name="projectId"
+            app:argType="integer" />
     </fragment>
 </navigation>

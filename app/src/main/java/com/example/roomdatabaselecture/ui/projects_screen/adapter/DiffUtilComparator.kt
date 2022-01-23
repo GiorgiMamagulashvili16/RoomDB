@@ -1,4 +1,4 @@
-package com.example.roomdatabaselecture.ui.projects_screen
+package com.example.roomdatabaselecture.ui.projects_screen.adapter
 
 import androidx.recyclerview.widget.DiffUtil
 import com.example.roomdatabaselecture.data.model.Project
